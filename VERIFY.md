@@ -91,3 +91,19 @@ sha256sum LASR修改器-使用说明.md VERIFY.md
 ```
 
 （哈希值随每个 release 的说明一并给出。）
+
+## 8. 反编译研究与调试补丁（2026-10）
+
+这一层的证据不在两个编辑器里，而在 `docs/62–68` 与 `vm/`、`tools/`。要点（全部可复现）：
+
+| 判据 | 结果 | 复现 |
+|---|---|---|
+| 容器层往返 | 2,224 / 2,224 类逐字节一致 | `python tools/tufa_ir.py --roundtrip` |
+| 源码层往返 | 2,224 / 2,224 逐字节一致 | `python tools/tufa_src.py --roundtrip` |
+| 重新打包 `java/classes.zip` | 304 / 304 条目一致，整包 md5 与发行版相同 | `python tools/repack_classes.py` |
+| 解释器跑静态初始化 | 1,058 类 / 5,403 字段 0 bad；`Init.<init>` 93,159,836 步 errs=0 | `vm/tufa_vm.c` 编译后 `--clinit` |
+| 调试菜单补丁 | 从原始 `classes.zip` 读出的两个类各改 2/1 字节后，302/302 未改动条目仍与发行版逐字节相同；成品 md5 `f37d17e6…` 可复现 | `python tools/make_debugmod.py --game ...` |
+| 补丁沙箱验证 | `Config.majomParade` 0 → 1（再挂 `load`/`init` 都保持 1）、`Input.RCDIK_RMENU` 184 → 41 | 同上，`--verify-corpus` 后跑解释器 dump |
+| 补丁实机验证 | 车库多出 5 个调试按钮、赛中菜单多出 win/loose、按 `~` 弹控制台；跑完一局回主菜单正常 | 人上机，2026-10 |
+
+复现基线（工作目录、命令顺序、常见坑）见 `docs/65` §10 与 `docs/67`。
