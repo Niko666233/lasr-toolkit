@@ -31,6 +31,11 @@ AI-generated project with human acceptance testing, not as traditionally hand-wr
 游戏副本生成（它调用 `LASR.exe` 自带的解压例程），生成物只落在本机，不会随仓库分发。
 没有游戏副本，这些工具无法工作，也没有意义。
 
+调试菜单补丁（`mods/debug-menu/`、`tools/make_debugmod.py`）同理：仓库里只有**脚本与说明**，
+补丁包里那 3 个被改的字节是脚本在你本机从**你自己的** `java\classes.zip` 里读出来、改完再用
+游戏自带的压缩例程重新打包得到的，成品 zip 不会出现在仓库里。反编译研究的文档只写**方法与结论**
+（判据、字节偏移、验证数据），不含任何类型的反编译转储。
+
 **你需要自备一份《L.A. Street Racing》的游戏安装。** 本项目不提供、也不协助获取游戏本体。
 《L.A. Street Racing》及其全部内容的著作权属于其各自的权利人，本项目与其无任何隶属或
 背书关系。

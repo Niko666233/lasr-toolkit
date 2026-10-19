@@ -1,6 +1,6 @@
 # 文档索引
 
-`docs/` 里是 **58 篇编号规格书** + 格式速查 + 原始证据附录。本文件是唯一目录 ——
+`docs/` 里是 **65 篇编号规格书** + 格式速查 + 原始证据附录。本文件是唯一目录 ——
 想知道「某件事写在哪篇」，先看这里，不要逐个打开。
 
 **状态标记**：✅ 完成（结论已落盘并带证据）／ ⏳ 部分（有明确未解项）／ 📓 过程记录（失败的尝试，
@@ -113,6 +113,13 @@
 | `../remaster/unity_project/README.md` | Unity 工程使用说明（导入步骤、音频设置、重导模型、验证入口） |
 | `59_SLICE.md` | 最小可玩切片：数据→场景的生成管线与实测（含数据层缺口清单） |
 | `60_EDITORS.md` | **编辑器两件套**：存档格式逐字段还原 + 车辆 class 字面量就地改写的完整链路、打包环境坑、验证清单（存档 exe / 车辆 .bat 已交付） |
+| `62_MESH_UV_AND_TEXTURE_BINDING.md` | 网格 UV 与贴图绑定 |
+| `63_FORCE_FEEDBACK.md` | 力反馈链路（DInput 效果、暂停键真相、自出力设计） |
+| `64_FULL_DECOMPILATION.md` | **反编译总纲**：三层判据（容器/源码/打包）+ 运行层，native 层范围结算 |
+| `65_VM_INTERPRETER.md` | **VM 解释器重建全过程**（§9 七坑、§10 逐轮记录、§10.57 范围结论） |
+| `66_LIVE_TEST_PROTOCOL.md` | 实机只读挂接协议（安全形状） |
+| `67_RESULT_SUMMARY.md` | **结果总览一页**：四判据 + native 范围 + 实机已验证 + 产物怎么自己生成 |
+| `68_CHEATS_AND_DEBUG.md` | **作弊码与调试入口全清单**（排行榜 3 码 / 赛中组合键 / majomParade 调试菜单 + 补丁） |
 | 生成数据（勿通读） | `gametype_map.{json,csv}`、`gametype_names.csv`（4,199 行）、`map_objects.csv`（15,194 行）、`map_scene.csv`（550 行）、`*.png`（渲染验证图） |
 
 > 类体积总清单（2,224 类）已移出 `docs/`：见仓库根 `out_class_inventory.md`（由 `tools/inventory.py` 生成）。
